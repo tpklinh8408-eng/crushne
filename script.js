@@ -3,27 +3,26 @@ const question = document.querySelector(".question");
 const gif = document.querySelector(".gif");
 const yesBtn = document.querySelector(".yes-btn");
 const noBtn = document.querySelector(".no-btn");
-const questionPrompt = document.querySelector(".question-prompt"); // Thêm đoạn này
+const questionPrompt = document.querySelector(".question-prompt");
 
+// Khi chúng nó bấm vào nút TẤT NHIÊN RỒI
 yesBtn.addEventListener("click", () => {
-  question.innerHTML = "Anh đúng là đồ tòyyyyyyy 🥺<br>dỗiiii x10000000";
-  gif.src =
-    "https://media.giphy.com/media/vvc1dJPLEU2QOw9cXy/giphy.gif";
-
-  // Ẩn cả hai nút Yes và No
-  yesBtn.style.display = "none";
-  noBtn.style.display = "none";
-  questionPrompt.style.display = "none"; // Ẩn dòng chữ khi người dùng nhấn vào nút Yes
+    question.innerHTML = "Ok cưng, sáng suốt quá. Ta cho ngươi lui 🥰";
+    // Ẩn cả hai nút và dòng nhắc nhở đi cho đẹp màn hình
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+    if(questionPrompt) questionPrompt.style.display = "none";
 });
 
+// Khi chúng nó di chuột định bấm vào nút Không mđ (Nút này sẽ tự chạy trốn)
 noBtn.addEventListener("mouseover", () => {
-  const noBtnRect = noBtn.getBoundingClientRect();
-  const maxX = window.innerWidth - noBtnRect.width;
-  const maxY = window.innerHeight - noBtnRect.height;
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
 
-  const randomX = Math.floor(Math.random() * maxX);
-  const randomY = Math.floor(Math.random() * maxY);
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
 
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
+    noBtn.style.position = "absolute";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 });
